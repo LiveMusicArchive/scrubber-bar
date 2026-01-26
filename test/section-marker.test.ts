@@ -1,4 +1,5 @@
 import { html, fixture, expect } from '@open-wc/testing';
+import { it, describe } from 'vitest';
 
 import '../index';
 import { SectionMarker } from '../src/section-marker';

@@ -1,4 +1,5 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
+import { it, describe } from 'vitest';
 
 import '../index';
 import type { ScrubberBar } from '../src/scrubber-bar';
