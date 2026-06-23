@@ -1,11 +1,10 @@
 import { html, fixture, expect, oneEvent } from '@open-wc/testing';
-import { it, describe } from 'vitest';
 
-import '../index';
+// Side-effect import registers <scrubber-bar> (and, transitively, <section-marker>).
+// Without it, esbuild elides the type-only class imports below and the element never registers.
+import '../src/scrubber-bar';
 import type { ScrubberBar } from '../src/scrubber-bar';
-import { SectionMarker } from '../src/section-marker';
-
-/* eslint-disable no-unused-expressions */
+import type { SectionMarker } from '../src/section-marker';
 
 describe('ScrubberBar', () => {
   it('defaults value to 0', async () => {
@@ -103,7 +102,7 @@ describe('ScrubberBar', () => {
     `)) as ScrubberBar;
 
     const rangeSlider = el.shadowRoot?.getElementById(
-      'slider'
+      'slider',
     ) as HTMLInputElement;
     if (rangeSlider) rangeSlider.value = '20';
     const inputEvent = new Event('input');
@@ -124,7 +123,7 @@ describe('ScrubberBar', () => {
 
     const inputEvent = new Event('input');
     const rangeSlider = el.shadowRoot?.getElementById(
-      'slider'
+      'slider',
     ) as HTMLInputElement;
 
     if (rangeSlider) rangeSlider.value = '10';
@@ -156,7 +155,7 @@ describe('ScrubberBar', () => {
 
     const event = new MouseEvent('mousedown');
     const rangeSlider = el.shadowRoot?.getElementById(
-      'slider'
+      'slider',
     ) as HTMLInputElement;
 
     setTimeout(() => {

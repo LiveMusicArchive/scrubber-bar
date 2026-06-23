@@ -1,10 +1,9 @@
 import { html, fixture, expect } from '@open-wc/testing';
-import { it, describe } from 'vitest';
 
-import '../index';
-import { SectionMarker } from '../src/section-marker';
-
-/* eslint-disable no-unused-expressions */
+// Side-effect import registers <section-marker>; the class below is type-only
+// and would otherwise be elided by esbuild, dropping the registration.
+import '../src/section-marker';
+import type { SectionMarker } from '../src/section-marker';
 
 describe('SectionMarker', () => {
   it('marker mode defaults to `neither`', async () => {

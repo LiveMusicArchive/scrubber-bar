@@ -1,30 +1,346 @@
 {
-  "version": 2,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "scrubber-bar",
-      "description": "A component with a title and an action counter",
-      "properties": [
+      "kind": "javascript-module",
+      "path": "index.ts",
+      "declarations": [],
+      "exports": [
         {
-          "name": "title",
-          "type": "String",
-          "description": "The title of your component",
-          "default": "Hey there"
-        },
+          "kind": "js",
+          "name": "ScrubberBar",
+          "declaration": {
+            "name": "ScrubberBar",
+            "module": "./src/scrubber-bar"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/scrubber-bar.ts",
+      "declarations": [
         {
-          "name": "counter",
-          "type": "Number",
-          "description": "An action counter",
-          "default": 0
+          "kind": "class",
+          "description": "",
+          "name": "ScrubberBar",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "min",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "min"
+            },
+            {
+              "kind": "field",
+              "name": "max",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "attribute": "max"
+            },
+            {
+              "kind": "field",
+              "name": "step",
+              "type": {
+                "text": "number"
+              },
+              "default": "0.1",
+              "attribute": "step"
+            },
+            {
+              "kind": "field",
+              "name": "sectionMarkerPercentages",
+              "type": {
+                "text": "number[]"
+              },
+              "default": "[]",
+              "attribute": "sectionMarkerPercentages"
+            },
+            {
+              "kind": "field",
+              "name": "expandSectionMarkers",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "expandSectionMarkers"
+            },
+            {
+              "kind": "field",
+              "name": "rangeSlider",
+              "type": {
+                "text": "HTMLInputElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "webkitStyle",
+              "type": {
+                "text": "HTMLStyleElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "userIsInteracting",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_value",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "percentage",
+              "type": {
+                "text": "number"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "handleSlide",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "interactionStarted",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "interactionEnded",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "webkitSliderStyle",
+              "type": {
+                "text": "TemplateResult"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "emitChangeEvent",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "sortedMarkers",
+              "type": {
+                "text": "number[]"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "updateMarkerFlags",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "userInteractionStarted",
+              "type": {
+                "text": "Event"
+              }
+            },
+            {
+              "name": "userInteractionEnded",
+              "type": {
+                "text": "Event"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "value"
+            },
+            {
+              "name": "min",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "min"
+            },
+            {
+              "name": "max",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "fieldName": "max"
+            },
+            {
+              "name": "step",
+              "type": {
+                "text": "number"
+              },
+              "default": "0.1",
+              "fieldName": "step"
+            },
+            {
+              "name": "sectionMarkerPercentages",
+              "type": {
+                "text": "number[]"
+              },
+              "default": "[]",
+              "fieldName": "sectionMarkerPercentages"
+            },
+            {
+              "name": "expandSectionMarkers",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "expandSectionMarkers"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "scrubber-bar",
+          "customElement": true
         }
       ],
-      "events": [],
-      "slots": [],
-      "cssProperties": [
+      "exports": [
         {
-          "name": "--scrubber-bar-text-color",
-          "description": "Main Text Color",
-          "type": "Color"
+          "kind": "js",
+          "name": "ScrubberBar",
+          "declaration": {
+            "name": "ScrubberBar",
+            "module": "src/scrubber-bar.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "scrubber-bar",
+          "declaration": {
+            "name": "ScrubberBar",
+            "module": "src/scrubber-bar.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/section-marker.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SectionMarker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "markerMode",
+              "attribute": "markerMode"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "markerMode",
+              "fieldName": "markerMode"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "section-marker",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "section-marker",
+          "declaration": {
+            "name": "SectionMarker",
+            "module": "src/section-marker.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SectionMarkerMode",
+          "declaration": {
+            "name": "SectionMarkerMode",
+            "module": "src/section-marker.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SectionMarker",
+          "declaration": {
+            "name": "SectionMarker",
+            "module": "src/section-marker.ts"
+          }
         }
       ]
     }

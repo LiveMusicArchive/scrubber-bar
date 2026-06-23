@@ -5,7 +5,6 @@ import { customElement, property } from 'lit/decorators.js';
 import prevSectionImage from './assets/img/previous-section-marker';
 import nextSectionImage from './assets/img/next-section-marker';
 
-// eslint-disable-next-line no-shadow
 enum SectionMarkerMode {
   left = 'left',
   right = 'right',
@@ -42,7 +41,8 @@ class SectionMarker extends LitElement {
       .arrow {
         padding-top: 10px;
         opacity: 1;
-        transition: opacity ${animationSpeed} ease-out,
+        transition:
+          opacity ${animationSpeed} ease-out,
           padding-top ${animationSpeed} ease-out;
       }
 

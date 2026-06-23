@@ -1,23 +1,23 @@
-  {
+{
   "compilerOptions": {
-    "target": "es2018",
+    "target": "es2022",
     "module": "esnext",
-    "moduleResolution": "node",
-    "noEmitOnError": true,
-    "lib": ["es2017", "dom"],
+    "moduleResolution": "bundler",
+    "lib": ["es2022", "dom", "dom.iterable"],
     "strict": true,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
     "importHelpers": true,
+    "experimentalDecorators": true,
+    // Lit's @property/@state decorators install reactive accessors on the
+    // class prototype. Standard class fields (the default at target es2022+)
+    // would redefine those as own properties and clobber the accessors,
+    // silently breaking reactivity — so class fields stay as assignments.
+    "useDefineForClassFields": false,
+    "noEmit": true,
     "outDir": "dist",
-    "sourceMap": true,
-    "inlineSources": true,
-    "rootDir": "./",
-    "declaration": true
+    "rootDir": "."
   },
-  "include": [
-    "src/**/*.ts",
-    "index.ts"
-  ]
+  "include": ["index.ts", "src/**/*.ts", "demo/**/*.ts", "test/**/*.ts"]
 }

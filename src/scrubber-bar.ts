@@ -62,9 +62,9 @@ export class ScrubberBar extends LitElement {
         <input
           id="slider"
           type="range"
-          min=${this.min}
-          max=${this.max}
-          step=${this.step}
+          min="${this.min}"
+          max="${this.max}"
+          step="${this.step}"
           .value=${this._value}
           @mousedown=${this.interactionStarted}
           @mouseup=${this.interactionEnded}
@@ -142,19 +142,19 @@ export class ScrubberBar extends LitElement {
     const currentValue: number = this._value;
 
     const percentsGreaterThanValue: number[] = this.sortedMarkers.filter(
-      value => value > currentValue
+      value => value > currentValue,
     );
     const closestUpper = Math.min(...percentsGreaterThanValue);
 
     const percentsLessThanValue: number[] = this.sortedMarkers.filter(
-      value => value <= currentValue
+      value => value <= currentValue,
     );
     const closestLower = Math.max(...percentsLessThanValue);
 
     this.sectionMarkerPercentages.forEach(value => {
       const marker: SectionMarker | null | undefined =
         this.shadowRoot?.querySelector(
-          `section-marker[data-location="${value}"]`
+          `section-marker[data-location="${value}"]`,
         );
       if (!marker) return;
 
