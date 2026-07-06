@@ -1,0 +1,5 @@
+# rs-module-lexer ships a native-binary build script. It's only pulled in by
+# the dev-only custom-elements-manifest analyzer and runs fine without it, so
+# skip its build rather than allow the postinstall.
+allowBuilds:
+  rs-module-lexer: false

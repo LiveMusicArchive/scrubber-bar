@@ -21,6 +21,7 @@
     "custom-elements.json"
   ],
   "sideEffects": true,
+  "packageManager": "pnpm@11.10.0",
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
@@ -39,7 +40,7 @@
     "test": "vitest run --coverage",
     "test:watch": "vitest",
     "prepare": "husky",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
     "lit": "^3"
