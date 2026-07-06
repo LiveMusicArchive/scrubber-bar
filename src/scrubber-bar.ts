@@ -25,6 +25,9 @@ export class ScrubberBar extends LitElement {
 
   @property({ type: Boolean }) expandSectionMarkers: boolean = false;
 
+  /** Accessible name for the range input, announced by screen readers. */
+  @property({ type: String }) label = 'Scrubber';
+
   @query('#rangeSlider') rangeSlider!: HTMLInputElement;
 
   @query('#webkit-range-input-style') webkitStyle!: HTMLStyleElement;
@@ -62,6 +65,7 @@ export class ScrubberBar extends LitElement {
         <input
           id="slider"
           type="range"
+          aria-label=${this.label}
           min="${this.min}"
           max="${this.max}"
           step="${this.step}"
@@ -174,7 +178,10 @@ export class ScrubberBar extends LitElement {
   static get styles(): CSSResultGroup {
     const markerInset = css`var(--markerInset, 10px)`;
 
-    const scrubberBarHeight = css`var(--scrubberBarHeight, 20px)`;
+    // At least 24px tall so the input clears the WCAG 2.5.8 minimum pointer
+    // target. The input is centered on the shorter .container, so this grows
+    // the hit area without moving the visible track or thumb.
+    const scrubberBarHeight = css`var(--scrubberBarHeight, 24px)`;
 
     const thumbDiameter = css`var(--thumbDiameter, 20px)`;
     const thumbBorderRadius = css`var(--thumbBorderRadius, 50%)`;
@@ -250,7 +257,8 @@ export class ScrubberBar extends LitElement {
         background: none;
         outline: none;
         position: absolute;
-        bottom: 0;
+        top: 50%;
+        transform: translateY(-50%);
       }
 
       input[type='range']::-webkit-slider-thumb {
