@@ -1,0 +1,11 @@
+@astralengineering/scrubber-bar
+
+This package is a fork of @internetarchive/scrubber-bar, part of the
+Internet Archive UX monorepo (https://github.com/internetarchive/iaux),
+Copyright (C) Internet Archive, licensed under the GNU Affero General
+Public License, version 3 only (AGPL-3.0-only).
+
+Modifications in this fork are Copyright (C) Astral Engineering and are
+likewise licensed under AGPL-3.0-only.
+
+See the LICENSE file for the full license text.

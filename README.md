@@ -3,6 +3,10 @@
 A [Lit](https://lit.dev) range/scrubber web component for scrubbing through
 media, with optional section markers.
 
+This is a fork of [`@internetarchive/scrubber-bar`](https://github.com/internetarchive/iaux/tree/main/packages/scrubber-bar)
+(part of the Internet Archive UX monorepo). Because the upstream is licensed
+AGPL-3.0-only, so is this fork. See [LICENSE](./LICENSE) and [NOTICE](./NOTICE).
+
 ## Installation
 
 Published to the Astral Engineering registry:
