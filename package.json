@@ -30,6 +30,8 @@
   "scripts": {
     "start": "vite",
     "build": "vite build && tsc -p tsconfig.build.json",
+    "build:demo": "vite build --config vite.demo.config.ts",
+    "preview:demo": "vite preview --config vite.demo.config.ts",
     "typecheck": "tsc --noEmit",
     "analyze": "cem analyze",
     "lint": "eslint . && prettier \"**/*.{ts,js,mjs,html,md}\" --check",

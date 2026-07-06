@@ -7,6 +7,14 @@ This is a fork of [`@internetarchive/scrubber-bar`](https://github.com/interneta
 (part of the Internet Archive UX monorepo). Because the upstream is licensed
 AGPL-3.0-only, so is this fork. See [LICENSE](./LICENSE) and [NOTICE](./NOTICE).
 
+## Demo
+
+Live demo: https://livemusicarchive.github.io/scrubber-bar/
+
+It's the `demo/` app deployed to GitHub Pages on every push to `main` (see
+[.github/workflows/deploy-demo.yml](./.github/workflows/deploy-demo.yml)). Build
+it locally with `npm run build:demo`, then `npm run preview:demo`.
+
 ## Installation
 
 Published to the Astral Engineering registry:
