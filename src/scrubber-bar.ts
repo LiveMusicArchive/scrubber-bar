@@ -11,18 +11,45 @@ import { customElement, property, query, state } from 'lit/decorators.js';
 
 import { SectionMarker, SectionMarkerMode } from './section-marker';
 
+/**
+ * A range/scrubber bar for scrubbing through media, with optional section
+ * markers along the track.
+ *
+ * @fires valuechange - The user moved the scrubber. `detail.value` is the new value.
+ * @fires userInteractionStarted - The user pressed the scrubber (mousedown/touchstart).
+ * @fires userInteractionEnded - The user released the scrubber (mouseup/touchend).
+ *
+ * @cssproperty [--trackFillColor=#3272b6] - Color of the filled (played) portion of the track.
+ * @cssproperty [--trackColor=rgba(0, 0, 0, 0.1)] - Color of the unfilled portion of the track.
+ * @cssproperty [--trackHeight=10px] - Height of the track.
+ * @cssproperty [--trackBorder=1px solid white] - Border around the track.
+ * @cssproperty [--trackBorderRadius=5px] - Corner radius of the track.
+ * @cssproperty [--thumbColor=white] - Fill color of the thumb.
+ * @cssproperty [--thumbDiameter=20px] - Width and height of the thumb.
+ * @cssproperty [--thumbBorder=1px solid black] - Border around the thumb.
+ * @cssproperty [--thumbBorderRadius=50%] - Corner radius of the thumb.
+ * @cssproperty [--scrubberBarHeight=24px] - Height of the input hit area, kept at least 24px for the WCAG pointer target.
+ * @cssproperty [--markerInset=10px] - Left and right inset of the section-marker container.
+ * @cssproperty [--webkitThumbTopMargin=-6px] - Top margin that vertically centers the thumb in WebKit.
+ */
 @customElement('scrubber-bar')
 export class ScrubberBar extends LitElement {
+  /** Current position of the scrubber, between `min` and `max`. */
   @property({ type: Number }) value = 0;
 
+  /** Lowest value the scrubber can take. */
   @property({ type: Number }) min = 0;
 
+  /** Highest value the scrubber can take. */
   @property({ type: Number }) max = 100;
 
+  /** Granularity the thumb moves in. */
   @property({ type: Number }) step = 0.1;
 
+  /** Section-marker positions, each a percentage (0-100) along the track. */
   @property({ type: Array }) sectionMarkerPercentages: number[] = [];
 
+  /** Expand the markers flanking the current value to point toward the thumb. */
   @property({ type: Boolean }) expandSectionMarkers: boolean = false;
 
   /** Accessible name for the range input, announced by screen readers. */
