@@ -251,9 +251,10 @@ export class ScrubberBar extends LitElement {
         height: 10px;
         border-radius: 1em;
         position: absolute;
-        bottom: 7px;
-        left: 2px;
-        right: -2px;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
       }
 
       .marker-container {
@@ -267,19 +268,23 @@ export class ScrubberBar extends LitElement {
         position: absolute;
         width: 2rem;
         height: ${trackHeight};
-        bottom: 7px;
+        top: 50%;
         /*
-          we set the left side of the marker to the spot where we want it, but the marker line is in
-          the center of the marker so we need to shift it to the left by half its width so this transform
-          is doing that
+          The marker is positioned by its left edge, but its line sits in the
+          center, so translateX(-50%) shifts it left by half its width to land
+          on the spot. translateY(-50%) pairs with top: 50% to center it on the
+          track.
          */
-        transform: translateX(-50%);
+        transform: translate(-50%, -50%);
       }
 
       input[type='range'] {
         -webkit-appearance: none;
         height: ${scrubberBarHeight};
         padding: 0;
+        /* Clear the UA default margin so the input's centered track lines up
+           with .color-fill and the markers. */
+        margin: 0;
         width: 100%;
         background: none;
         outline: none;
