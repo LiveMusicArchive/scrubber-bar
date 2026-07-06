@@ -82,6 +82,16 @@
             },
             {
               "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Scrubber'",
+              "description": "Accessible name for the range input, announced by screen readers.",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
               "name": "rangeSlider",
               "type": {
                 "text": "HTMLInputElement"
@@ -259,6 +269,15 @@
               },
               "default": "false",
               "fieldName": "expandSectionMarkers"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Scrubber'",
+              "description": "Accessible name for the range input, announced by screen readers.",
+              "fieldName": "label"
             }
           ],
           "superclass": {

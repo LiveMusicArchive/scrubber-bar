@@ -1,1 +1,10 @@
+set -e
+
 pnpm exec lint-staged
+
+# Keep custom-elements.json in sync with the component. When source that feeds
+# the manifest is staged, regenerate it and add it to the commit.
+if git diff --cached --name-only | grep -qE '^(index\.ts|src/.*\.ts)$'; then
+  pnpm exec cem analyze
+  git add custom-elements.json
+fi
