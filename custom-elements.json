@@ -23,8 +23,70 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "A range/scrubber bar for scrubbing through media, with optional section\nmarkers along the track.",
           "name": "ScrubberBar",
+          "cssProperties": [
+            {
+              "description": "Color of the filled (played) portion of the track.",
+              "name": "--trackFillColor",
+              "default": "#3272b6"
+            },
+            {
+              "description": "Color of the unfilled portion of the track.",
+              "name": "--trackColor",
+              "default": "rgba(0, 0, 0, 0.1)"
+            },
+            {
+              "description": "Height of the track.",
+              "name": "--trackHeight",
+              "default": "10px"
+            },
+            {
+              "description": "Border around the track.",
+              "name": "--trackBorder",
+              "default": "1px solid white"
+            },
+            {
+              "description": "Corner radius of the track.",
+              "name": "--trackBorderRadius",
+              "default": "5px"
+            },
+            {
+              "description": "Fill color of the thumb.",
+              "name": "--thumbColor",
+              "default": "white"
+            },
+            {
+              "description": "Width and height of the thumb.",
+              "name": "--thumbDiameter",
+              "default": "20px"
+            },
+            {
+              "description": "Border around the thumb.",
+              "name": "--thumbBorder",
+              "default": "1px solid black"
+            },
+            {
+              "description": "Corner radius of the thumb.",
+              "name": "--thumbBorderRadius",
+              "default": "50%"
+            },
+            {
+              "description": "Height of the input hit area, kept at least 24px for the WCAG pointer target.",
+              "name": "--scrubberBarHeight",
+              "default": "24px"
+            },
+            {
+              "description": "Left and right inset of the section-marker container.",
+              "name": "--markerInset",
+              "default": "10px"
+            },
+            {
+              "description": "Top margin that vertically centers the thumb in WebKit.",
+              "name": "--webkitThumbTopMargin",
+              "default": "-6px"
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -33,6 +95,7 @@
                 "text": "number"
               },
               "default": "0",
+              "description": "Current position of the scrubber, between `min` and `max`.",
               "attribute": "value"
             },
             {
@@ -42,6 +105,7 @@
                 "text": "number"
               },
               "default": "0",
+              "description": "Lowest value the scrubber can take.",
               "attribute": "min"
             },
             {
@@ -51,6 +115,7 @@
                 "text": "number"
               },
               "default": "100",
+              "description": "Highest value the scrubber can take.",
               "attribute": "max"
             },
             {
@@ -60,6 +125,7 @@
                 "text": "number"
               },
               "default": "0.1",
+              "description": "Granularity the thumb moves in.",
               "attribute": "step"
             },
             {
@@ -69,6 +135,7 @@
                 "text": "number[]"
               },
               "default": "[]",
+              "description": "Section-marker positions, each a percentage (0-100) along the track.",
               "attribute": "sectionMarkerPercentages"
             },
             {
@@ -78,6 +145,7 @@
                 "text": "boolean"
               },
               "default": "false",
+              "description": "Expand the markers flanking the current value to point toward the thumb.",
               "attribute": "expandSectionMarkers"
             },
             {
@@ -212,13 +280,19 @@
               "name": "userInteractionStarted",
               "type": {
                 "text": "Event"
-              }
+              },
+              "description": "The user pressed the scrubber (mousedown/touchstart)."
             },
             {
               "name": "userInteractionEnded",
               "type": {
                 "text": "Event"
-              }
+              },
+              "description": "The user released the scrubber (mouseup/touchend)."
+            },
+            {
+              "description": "The user moved the scrubber. `detail.value` is the new value.",
+              "name": "valuechange"
             }
           ],
           "attributes": [
@@ -228,6 +302,7 @@
                 "text": "number"
               },
               "default": "0",
+              "description": "Current position of the scrubber, between `min` and `max`.",
               "fieldName": "value"
             },
             {
@@ -236,6 +311,7 @@
                 "text": "number"
               },
               "default": "0",
+              "description": "Lowest value the scrubber can take.",
               "fieldName": "min"
             },
             {
@@ -244,6 +320,7 @@
                 "text": "number"
               },
               "default": "100",
+              "description": "Highest value the scrubber can take.",
               "fieldName": "max"
             },
             {
@@ -252,6 +329,7 @@
                 "text": "number"
               },
               "default": "0.1",
+              "description": "Granularity the thumb moves in.",
               "fieldName": "step"
             },
             {
@@ -260,6 +338,7 @@
                 "text": "number[]"
               },
               "default": "[]",
+              "description": "Section-marker positions, each a percentage (0-100) along the track.",
               "fieldName": "sectionMarkerPercentages"
             },
             {
@@ -268,6 +347,7 @@
                 "text": "boolean"
               },
               "default": "false",
+              "description": "Expand the markers flanking the current value to point toward the thumb.",
               "fieldName": "expandSectionMarkers"
             },
             {
