@@ -13,14 +13,14 @@ Live demo: https://livemusicarchive.github.io/scrubber-bar/
 
 It's the `demo/` app deployed to GitHub Pages on every push to `main` (see
 [.github/workflows/deploy-demo.yml](./.github/workflows/deploy-demo.yml)). Build
-it locally with `npm run build:demo`, then `npm run preview:demo`.
+it locally with `pnpm build:demo`, then `pnpm preview:demo`.
 
 ## Installation
 
 Published to the Astral Engineering registry:
 
 ```bash
-npm i @astralengineering/scrubber-bar
+pnpm add @astralengineering/scrubber-bar
 ```
 
 ## Usage
@@ -40,12 +40,16 @@ single shared copy.
 
 ## Development
 
+This repo uses [pnpm](https://pnpm.io). Run `pnpm install` first (the pinned
+version comes from the `packageManager` field, so Corepack picks it up
+automatically).
+
 ```bash
-npm start        # Vite dev server for demo/index.html
-npm run build    # bundle to dist/index.js (ESM) + type declarations
-npm test         # Vitest (happy-dom) with coverage
-npm run lint     # ESLint + Prettier
-npm run format   # auto-fix
-npm run typecheck
-npm run analyze  # regenerate custom-elements.json
+pnpm start      # Vite dev server for demo/index.html
+pnpm build      # bundle to dist/index.js (ESM) + type declarations
+pnpm test       # Vitest (happy-dom) with coverage
+pnpm lint       # ESLint + Prettier
+pnpm format     # auto-fix
+pnpm typecheck
+pnpm analyze    # regenerate custom-elements.json
 ```
