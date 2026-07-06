@@ -18,16 +18,6 @@ export default tseslint.config(
     },
   },
   {
-    files: ['test/**/*.ts'],
-    languageOptions: {
-      globals: { ...globals.mocha },
-    },
-    rules: {
-      // chai assertion getters (e.g. `expect(x).to.exist`) read as unused expressions
-      '@typescript-eslint/no-unused-expressions': 'off',
-    },
-  },
-  {
     files: ['**/*.{js,mjs}', '*.config.ts'],
     languageOptions: {
       globals: { ...globals.node },

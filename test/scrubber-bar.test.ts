@@ -1,4 +1,5 @@
-import { html, fixture, expect, oneEvent } from '@open-wc/testing';
+import { describe, it, expect } from 'vitest';
+import { html, fixture, oneEvent } from './helpers';
 
 // Side-effect import registers <scrubber-bar> (and, transitively, <section-marker>).
 // Without it, esbuild elides the type-only class imports below and the element never registers.
@@ -12,7 +13,7 @@ describe('ScrubberBar', () => {
       <scrubber-bar></scrubber-bar>
     `)) as ScrubberBar;
 
-    expect(el.value).to.equal(0);
+    expect(el.value).toBe(0);
   });
 
   it('dispatches userInteractionStarted event on user mousedown', async () => {
@@ -28,7 +29,7 @@ describe('ScrubberBar', () => {
       rangeSlider?.dispatchEvent(event);
     });
     const response = await oneEvent(el, 'userInteractionStarted');
-    expect(response).to.exist;
+    expect(response).toBeTruthy();
   });
 
   it('dispatches userInteractionEnded event on user mouseup', async () => {
@@ -44,7 +45,7 @@ describe('ScrubberBar', () => {
       rangeSlider?.dispatchEvent(event);
     });
     const response = await oneEvent(el, 'userInteractionEnded');
-    expect(response).to.exist;
+    expect(response).toBeTruthy();
   });
 
   it('dispatches userInteractionStarted event on user touchstart', async () => {
@@ -60,7 +61,7 @@ describe('ScrubberBar', () => {
       rangeSlider?.dispatchEvent(event);
     });
     const response = await oneEvent(el, 'userInteractionStarted');
-    expect(response).to.exist;
+    expect(response).toBeTruthy();
   });
 
   it('dispatches userInteractionEnded event on user touchend', async () => {
@@ -76,7 +77,7 @@ describe('ScrubberBar', () => {
       rangeSlider?.dispatchEvent(event);
     });
     const response = await oneEvent(el, 'userInteractionEnded');
-    expect(response).to.exist;
+    expect(response).toBeTruthy();
   });
 
   it('dispatches valuechange event when input occurs on slider', async () => {
@@ -93,7 +94,7 @@ describe('ScrubberBar', () => {
     });
 
     const { detail } = await oneEvent(el, 'valuechange');
-    expect(detail.value).to.equal(0);
+    expect(detail.value).toBe(0);
   });
 
   it('dispatches the proper value after an input change event', async () => {
@@ -113,7 +114,7 @@ describe('ScrubberBar', () => {
     });
 
     const { detail } = await oneEvent(el, 'valuechange');
-    expect(detail.value).to.equal(20);
+    expect(detail.value).toBe(20);
   });
 
   it('calculates the proper percentage for the given value and range', async () => {
@@ -133,8 +134,8 @@ describe('ScrubberBar', () => {
     });
 
     let response = await oneEvent(el, 'valuechange');
-    expect(response.detail.value).to.equal(10);
-    expect(el.percentage).to.equal(0);
+    expect(response.detail.value).toBe(10);
+    expect(el.percentage).toBe(0);
 
     rangeSlider.value = '20';
     setTimeout(() => {
@@ -142,8 +143,8 @@ describe('ScrubberBar', () => {
     });
 
     response = await oneEvent(el, 'valuechange');
-    expect(response.detail.value).to.equal(20);
-    expect(el.percentage).to.equal(25);
+    expect(response.detail.value).toBe(20);
+    expect(el.percentage).toBe(25);
   });
 
   it('does not update the slider field value if the user is interacting', async () => {
@@ -151,7 +152,7 @@ describe('ScrubberBar', () => {
       <scrubber-bar></scrubber-bar>
     `)) as ScrubberBar;
 
-    expect(el.value).to.equal(0);
+    expect(el.value).toBe(0);
 
     const event = new MouseEvent('mousedown');
     const rangeSlider = el.shadowRoot?.getElementById(
@@ -165,7 +166,7 @@ describe('ScrubberBar', () => {
 
     el.value = 20;
 
-    expect(rangeSlider.value).to.equal('0');
+    expect(rangeSlider.value).toBe('0');
   });
 
   it('properly lays out section markers', async () => {
@@ -175,10 +176,10 @@ describe('ScrubberBar', () => {
     `)) as ScrubberBar;
 
     const sectionMarkers = el.shadowRoot?.querySelectorAll('section-marker');
-    expect(sectionMarkers?.length).to.equal(6);
+    expect(sectionMarkers?.length).toBe(6);
 
     const testMarker = sectionMarkers ? sectionMarkers[1] : '';
-    expect((testMarker as SectionMarker).style.left).to.equal('11%');
+    expect((testMarker as SectionMarker).style.left).toBe('11%');
   });
 
   it('sets the marker flag values properly', async () => {
@@ -196,10 +197,10 @@ describe('ScrubberBar', () => {
     const leftMarker = sectionMarkers![3] as SectionMarker;
     const rightMarker = sectionMarkers![4] as SectionMarker;
     const nextMarker = sectionMarkers![5] as SectionMarker;
-    expect(prevMarker.markerMode).to.equal('neither');
-    expect(leftMarker.markerMode).to.equal('right');
-    expect(rightMarker.markerMode).to.equal('left');
-    expect(nextMarker.markerMode).to.equal('neither');
+    expect(prevMarker.markerMode).toBe('neither');
+    expect(leftMarker.markerMode).toBe('right');
+    expect(rightMarker.markerMode).toBe('left');
+    expect(nextMarker.markerMode).toBe('neither');
   });
 
   it('sets does not set the section markers if `expandSectionMarkers` is `false`', async () => {
@@ -216,9 +217,9 @@ describe('ScrubberBar', () => {
     const leftMarker = sectionMarkers[3] as SectionMarker;
     const rightMarker = sectionMarkers[4] as SectionMarker;
     const nextMarker = sectionMarkers[5] as SectionMarker;
-    expect(prevMarker.markerMode).to.equal('neither');
-    expect(leftMarker.markerMode).to.equal('neither');
-    expect(rightMarker.markerMode).to.equal('neither');
-    expect(nextMarker.markerMode).to.equal('neither');
+    expect(prevMarker.markerMode).toBe('neither');
+    expect(leftMarker.markerMode).toBe('neither');
+    expect(rightMarker.markerMode).toBe('neither');
+    expect(nextMarker.markerMode).toBe('neither');
   });
 });

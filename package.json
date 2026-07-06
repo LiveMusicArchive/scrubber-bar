@@ -34,8 +34,8 @@
     "analyze": "cem analyze",
     "lint": "eslint . && prettier \"**/*.{ts,js,mjs,html,md}\" --check",
     "format": "eslint . --fix && prettier \"**/*.{ts,js,mjs,html,md}\" --write",
-    "test": "web-test-runner --coverage",
-    "test:watch": "web-test-runner --watch",
+    "test": "vitest run --coverage",
+    "test:watch": "vitest",
     "prepare": "husky",
     "prepublishOnly": "npm run build"
   },
@@ -45,15 +45,13 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.4",
     "@eslint/js": "^9.39.2",
-    "@open-wc/testing": "^4.0.0",
-    "@types/mocha": "^10.0.10",
-    "@web/dev-server-esbuild": "^1.0.4",
-    "@web/test-runner": "^0.20.2",
+    "@vitest/coverage-v8": "^4.1.10",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-lit": "^2.1.1",
     "eslint-plugin-wc": "^3.0.1",
     "globals": "^16.5.0",
+    "happy-dom": "^20.10.6",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "lit": "^3.3.2",
@@ -61,7 +59,8 @@
     "tslib": "^2.8.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.53.1",
-    "vite": "^7.3.1"
+    "vite": "^7.3.1",
+    "vitest": "^4.1.10"
   },
   "prettier": {
     "singleQuote": true,

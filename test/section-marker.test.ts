@@ -1,4 +1,5 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { describe, it, expect } from 'vitest';
+import { html, fixture } from './helpers';
 
 // Side-effect import registers <section-marker>; the class below is type-only
 // and would otherwise be elided by esbuild, dropping the registration.
@@ -11,6 +12,6 @@ describe('SectionMarker', () => {
       <section-marker></section-marker>
     `)) as SectionMarker;
 
-    expect(el.markerMode).to.equal('neither');
+    expect(el.markerMode).toBe('neither');
   });
 });
