@@ -43,7 +43,7 @@ single shared copy.
 ```bash
 npm start        # Vite dev server for demo/index.html
 npm run build    # bundle to dist/index.js (ESM) + type declarations
-npm test         # Web Test Runner (real browser) with coverage
+npm test         # Vitest (happy-dom) with coverage
 npm run lint     # ESLint + Prettier
 npm run format   # auto-fix
 npm run typecheck
