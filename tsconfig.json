@@ -4,6 +4,9 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "lib": ["es2022", "dom", "dom.iterable"],
+    // Web Test Runner injects Mocha's describe/it/etc. as globals at runtime;
+    // pull in @types/mocha so the test files typecheck against them.
+    "types": ["mocha"],
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
